@@ -17,12 +17,10 @@ go
 	Vấn đề: Không
 	Nhiệm vụ tiếp theo: Chưa có
 	Thành viên: Phân Task như sau
-	 - Vũ Minh Đăng Khoa (Câu 5, 11, 17)
-	 - Hoàng Đức Hiền (Tạo Database, câu 1, và 7)
-	 - Nguyễn Đức Hùng (Câu 2, 8, 14, 13)
-	 - Võ Thanh Hải (Câu 6, 12, 18, 21)
-	 - Nguyễn Hồ Quang Thế (Câu 3, 9, 15, 19)
-	 - Huỳnh Gia Huy (Câu 4, 10, 16, 20)
+	 - Vũ Minh Đăng Khoa (Câu 5, 11, 17, 4, 10)
+	 - Hoàng Đức Hiền (Tạo Database, câu 1, và 3, 7, 19 )
+	 - Nguyễn Đức Hùng (Câu 2, 8, 14, 13, 9, 15)
+	 - Võ Thanh Hải (Câu 6, 12, 18, 21, 16, 20)
  */
 
 -- Tạo bảng items_ordered
@@ -138,6 +136,23 @@ CREATE TABLE cusomters
 	-- sau đó dùng toán tử WHERE đưa điều kiện LIKE tìm kiếm chữ cái bắt đầu bằng Chữ 'S'
 	WHERE item LIKE 'S%'
 
+  /*
+ Câu 19. Select the item and price of all items that start with the letters 'S', 'P', or 'F'.
+ */
+ 	-- Cách 1. Đầu tiên ta hiển thị truy xuất ra các trường item, price, trong Bảng items_ordered,
+	SELECT item, price 
+	-- Trong Bảng items_ordered
+	FROM items_ordered
+	-- sau đó dùng toán tử WHERE đưa điều kiện LIKE tìm kiếm chữ cái bắt đầu bằng Chữ 'S' or 'P' or 'F'
+	WHERE item LIKE 'S%' or item LIKE 'P%' or item LIKE 'F%'
+
+	-- Cách 2. 
+	-- Đầu tiên ta hiển thị truy xuất ra các trường item, price, trong Bảng items_ordered,
+	SELECT item, price 
+	-- Trong Bảng items_ordered
+	FROM  items_ordered
+	-- sau đó dùng toán tử WHERE đưa điều kiện LIKE dùng nhiều lần ký tự % trong cùng 1 chuỗi  tìm kiếm chữ cái bắt đầu bằng Chữ '[SPF]%'
+	WHERE item LIKE '[SPF]%'
 
  -----------------------------------------------------------------------
 
@@ -187,27 +202,3 @@ CREATE TABLE cusomters
 
   
  
-
- -----------------------------------------------------------------------
-
-  -- 5. HUỲNH GIA HUY - LÀM CÂU 4, 10, 16, 20
- 
-  -- Thành viên ghi CODE VÀ GIẢI THÍCH theo Format của mình trên như vậy!
-
-
-
-
- -----------------------------------------------------------------------
-
-
-
-  -----------------------------------------------------------------------
-
-  -- 6. NGUYỄN HỒ QUANG THẾ - LÀM CÂU 4, 10, 16, 20
- 
-  -- Thành viên ghi CODE VÀ GIẢI THÍCH theo Format của mình trên như vậy!
-
-
-
-
- -----------------------------------------------------------------------
