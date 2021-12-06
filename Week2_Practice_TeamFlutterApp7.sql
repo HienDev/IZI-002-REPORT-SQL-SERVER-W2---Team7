@@ -1,5 +1,4 @@
-﻿
-use master
+﻿use master
 -- Kiểm tra cơ sơ dữ liệu WEEK2PRACTICE đã tồn tại chưa? Nểu tồn tại rồi thì xóa, rồi tạo lại
 if exists (select Name from sys.databases  where Name ='WEEK2PRACTICE_TEAM7')
     drop database WEEK2PRACTICE_TEAM7   -- Xóa csdl WEEK2PRACTICE-TEAM7
@@ -128,6 +127,17 @@ CREATE TABLE cusomters
 	SELECT * FROM items_ordered
 	-- sau đó dùng toán tử WHERE đưa điều kiện đó là trường item phải là 'Tent'
 	WHERE item = 'Tent';
+
+ /*
+ Câu 3. Select the customerid, order_date, and item values from the items_ordered table for any items in the item column that start with the letter "S".
+ */
+	-- Đầu tiên ta hiển thị truy xuất ra các trường customerid, order_date, item trong Bảng items_ordered,
+	SELECT customerid, order_date, item
+	-- Trong Bảng items_ordered
+	FROM items_ordered
+	-- sau đó dùng toán tử WHERE đưa điều kiện LIKE tìm kiếm chữ cái bắt đầu bằng Chữ 'S'
+	WHERE item LIKE 'S%'
+
 
  -----------------------------------------------------------------------
 
