@@ -1,0 +1,2 @@
+# IZI-002-REPORT-SQL-SERVER-W2---Team7
+Report IZI-002 SQL SERVER WEEK 2 - Team 7 Flutter App 
