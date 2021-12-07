@@ -201,18 +201,77 @@ CREATE TABLE cusomters
 
 
   -----------------------------------------------------------------------
-
-  -- 3. NGUYỄN ĐỨC HÙNG - LÀM CÂU 2,8,14,13
+  -- 3. NGUYỄN ĐỨC HÙNG - LÀM CÂU 2, 8, 9, 13, 14, 15.
  
   -- Thành viên ghi CODE VÀ GIẢI THÍCH theo Format của mình trên như vậy!
 
+  /*
+ Câu 2. Select all columns from the items_ordered table for whoever purchased a Tent.
+ */
+	SELECT * FROM items_ordered
+	-- Tương tự ta hiển thị truy xuất ra Bảng items_ordered
+	WHERE item = 'Tent';
+	-- sau đó dùng toán tử WHERE đưa điều kiện đó là trường item phải là 'Tent'
+
+/*
+ Câu 8. Select all columns from the items_ordered table for whoever purchased a Tent.
+ */
+	 SELECT MIN(price)
+	 --Ta set giá giá của 'Tent' từ giá thấp nhất với hàm MIN.
+	FROM items_ordered
+	--Từ bảng items_ordered.
+	WHERE item = 'Tent'
+	-- sau đó dùng toán tử WHERE đưa điều kiện đó là trường item phải là 'Tent'.
+	;
+
+/*
+ Câu 9. How many people are in each unique state in the customers table? Select the state and display the number of people in each.
+ */
+	 SELECT [state], COUNT([state])
+	 --Chúng ta truy xuất dữ liệu từ bảng state, sau đó dùng biết đếm là COUNT, mục địch để hiện số người trong bảng.
+	FROM cusomters
+	--từ bảng cusomters 
+	GROUP BY [state];
+	--Trong group by cho phép ta sắp xếp các hàng của truy vấn theo nhóm. Các nhóm được xác định bởi các cột mà bạn chỉ định.Cụ thể ở đây là state.
+	
+/*
+ Câu 13. From the items_ordered table, select the item, maximum price, and minimum price for each specific item in the table.
+ */
+	 SELECT item, MAX(price), MIN(price)
+	-- Đầu tiên ta cần truy xuất dữ liệu từ trường item, sau đó dùng 2 biến đếm MAX(cao nhất) và MIN(thấp nhất) để đưa ra giá cao nhất và thấp nhất trong trường item
+	FROM items_ordered
+	--Từ bảng items_ordered
+	GROUP BY item
+	--Trong group by item cho phép ta sắp xếp các hàng của truy vấn theo nhóm giá cao và thấp nhất.
+;
+/*
+ Câu 14.How many orders did each customer make? Use the items_ordered table. Select the customerid, number of orders they made, and the sum of their orders if they purchased more than 1 item.
+ */
+	 SELECT customerid, COUNT(quantity), SUM(price)
+	 --Tương tự như câu 13, ta cần truy xuất dữ liệu từ trường item, sau đó dùng 2 biết đếm COUNT và SUM(tính tổng)
+	FROM items_ordered
+	--Từ bảng items_ordered
+	GROUP BY customerid
+	HAVING COUNT(quantity) > 1
+	--Ở đây hàm group by customerid vẫn có nhiệm vụ là đưa giá trị tổng số đơn đặt hàng nhưng yêu cầu là phải mua nhiều hơn 1 mặt hàng thì ==>Pass
+;
+/*
+Câu 15. Select the lastname, firstname, and city for all customers in the customers table. Display the results in Ascending Order based on the lastname.
+*/
+	SELECT lastname, firstname, city
+	--Ta cần truy xuất dữ liệu từ trường lastname, firstname, city
+	FROM cusomters
+	-- Từ bảng cusomters
+	ORDER BY lastname ASC;
+	--Order by lastname ASC cho ta có thể thứ tự sắp xếp mặc định là tăng dần (A đến Z, 0 đến 9)
+	--Ngược lại chúng ta có thể dùng Order by lastname DESC để sắp xếp theo thứ tự giảm dần (Z đến A, 9 đến 0)
 
 
 
  -----------------------------------------------------------------------
 
 
- 
+ -- HẾT TASK CỦA Nguyễn Đức Hùng.
  
 
  -----------------------------------------------------------------------
