@@ -179,21 +179,25 @@ CREATE TABLE cusomters
  -- sắp xếp các hàng của truy vấn theo item
  GROUP BY item;
   --câu 11:How many orders did each customer make? Use the items_ordered table. Select the customerid, number of orders they made, and the sum of their orders. Click the Group By answers link below if you have any problems.
-  -- 
+  -- Hiển thị truy xuất các trường, Count : đếm số item , Tổng giá của các item.
+   --Group By customerid : dựa theo trường customerid để lọc ra order của từng khách hàng
   SELECT customerid, COUNT(item) as CountOrders, SUM(price) as SumPirce
   FROM items_ordered
   GROUP BY customerid;
   --câu 17:Select the item and price for all of the items in the items_ordered table that the price is greater than 10.00. Display the results in Ascending order based on the price.
+  --hiển thị truy xuất item, price từ items_ordered
   SELECT item , price 
   FROM items_ordered
+  --điều kiện price>10.00
   WHERE price>10.00
+  --sắp xếm theo price tăng dần
   ORDER BY price ASC
 
 
 
  -----------------------------------------------------------------------
 
-
+ -- HẾT TASK CỦA Vũ Minh Đăng Khoa
 
 
   -----------------------------------------------------------------------
