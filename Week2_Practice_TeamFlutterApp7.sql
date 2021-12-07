@@ -31,7 +31,7 @@ CREATE TABLE items_ordered
 	order_date		DATE,
 	item			VARCHAR(50),
 	quantity		INT,
-	price			NVARCHAR(20)
+	price			float(20)
 )
 
 -- Thêm dữ liệu vào cho Table items_ordered
@@ -161,10 +161,33 @@ CREATE TABLE cusomters
 
  -----------------------------------------------------------------------
 
-  -- 2. VŨ MINH ĐĂNG KHOA - LÀM CÂU 5,11,17
+  -- 2. VŨ MINH ĐĂNG KHOA - LÀM CÂU 5,11,17,4,10
  
   -- Thành viên ghi CODE VÀ GIẢI THÍCH theo Format của mình trên như vậy!
-
+  --câu 4 :Select the distinct items in the items_ordered table. In other words, display a listing of each of the unique items from the items_ordered table.
+  -- mệnh đề DISTINCT được dùng để loại bỏ trùng lặp trong bộ kết quả trả về
+  SELECT DISTINCT item from items_ordered
+   
+  --câu 5:Select the maximum price of any item ordered in the items_ordered table. Hint: Select the maximum price only.
+  --Hàm Max để chọn ra giá trị cao nhất
+  SELECT MAX(price) from items_ordered
+  --câu 10:From the items_ordered table, select the item, maximum price, and minimum price for each specific item in the table. Hint: The items will need to be broken up into separate groups.
+  -- Hiển thị truy xuất item , maxprice, minpirce
+ SELECT item, MAX(price) as MaxPrice, MIN(price) as MinPrice
+  -- từ bảng items_ordered
+ FROM items_ordered
+ -- sắp xếp các hàng của truy vấn theo item
+ GROUP BY item;
+  --câu 11:How many orders did each customer make? Use the items_ordered table. Select the customerid, number of orders they made, and the sum of their orders. Click the Group By answers link below if you have any problems.
+  -- 
+  SELECT customerid, COUNT(item) as CountOrders, SUM(price) as SumPirce
+  FROM items_ordered
+  GROUP BY customerid;
+  --câu 17:Select the item and price for all of the items in the items_ordered table that the price is greater than 10.00. Display the results in Ascending order based on the price.
+  SELECT item , price 
+  FROM items_ordered
+  WHERE price>10.00
+  ORDER BY price ASC
 
 
 
