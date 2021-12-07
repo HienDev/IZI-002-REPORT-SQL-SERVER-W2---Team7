@@ -28,7 +28,7 @@ go
 CREATE TABLE items_ordered
 (
 	customerid		INT,
-	order_date		DATE,
+	order_date		VARCHAR(50),
 	item			VARCHAR(50),
 	quantity		INT,
 	price			float(20)
@@ -268,6 +268,7 @@ Câu 15. Select the lastname, firstname, and city for all customers in the custo
 
 
 
+
  -----------------------------------------------------------------------
 
 
@@ -279,6 +280,42 @@ Câu 15. Select the lastname, firstname, and city for all customers in the custo
   -- 4. VÕ THANH HẢI - LÀM CÂU 6,12,18,21
  
   -- Thành viên ghi CODE VÀ GIẢI THÍCH theo Format của mình trên như vậy!
+  --Câu 6 : Select the average price of all of the items ordered that were purchased in the month of Dec.
+SELECT AVG(price) as AvgPrice
+FROM items_ordered
+WHERE order_date LIKE '%Dec%'
+;
+  --Với yêu cầu ngày đặt là tháng 12
+  --Câu 12: How many people are in each unique state in the customers table that have more than one person in the state? Select the state and display the number of how many people are in each if it's greater than 1.
+SELECT state, COUNT(state) Quantity FROM cusomters
+GROUP BY state
+HAVING COUNT(state) > 1;
+--Câu 18 :Select the customerid, order_date, and item from the items_ordered table for all items unless they are 'Snow Shoes' or if they are 'Ear Muffs'. Display the rows as long as they are not either of these two items.
+SELECT customerid, order_date, item 
+--Hiển thị các trường customerid, order_date, item 
+FROM items_ordered
+--Từ bảng items_ordered
+WHERE NOT item ='Snow Shoes' or item ='Ear Muffs';
+-- VỚi yêu cầu trừ các item là snow shoes và ear muffs
+--cách 2:
+SELECT customerid, order_date, item 
+FROM items_ordered
+WHERE item NOT IN ('Snow Shoes','Ear Muffs');
+--Câu 21 : Select the firstname, city, and state from the customers table for all of the rows where the state value is either: Arizona, Washington, Oklahoma, Colorado, or Hawaii.
+--Cách 1:
+SELECT firstname, city, state 
+--Hiển thị các trường firstname, city, state 
+FROM cusomters
+--Từ bảng cusomters
+WHERE state ='Arizona' or state ='Washington' or state ='Oklahoma' or state ='Colorado' or state ='Hawaii';
+--Với yêu cầu state là Arizona, Washington, Oklahoma, Colorado hoặc Hawaii.
+--cách 2:
+SELECT firstname, city, state 
+ 
+FROM cusomters
+WHERE state IN ('Arizona', 'Washington', 'Oklahoma', 'Colorado', 'Hawaii')
+
+
 
 
 
