@@ -327,6 +327,14 @@ SELECT customerid, item, price FROM items_ordered
 -- dùng toán tử WHERE đưa điều kiện đó là trường customerid phải bằng 10449, sau đó hiển thị ra
 WHERE customerid = 10449 
 ORDER BY customerid  DESC ;
+--Hiển thị giá trị price giảm dần
+--Câu 20: Select the date, item, and price from the items_ordered table for all of the rows that have a price value ranging from 10.00 to 80.00.
+SELECT order_date, item, price 
+--Hiẻn thị các trường order_date, item, price
+FROM items_ordered
+--Từ bảng items_ordered
+WHERE price BETWEEN 10.000 AND 80.000;
+--Với yêu cầu giá trị trong khoảng từ 10.000 đến 80.000
 
 
 
