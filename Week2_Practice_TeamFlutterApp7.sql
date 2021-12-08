@@ -72,10 +72,10 @@ CREATE TABLE items_ordered
 -- Truy vấn dữ liệu table items_ordered
  SELECT* FROM items_ordered
 
--- Tạo bảng cusomters
--- Drop cusomters, xoá bảng drop table cusomters
+-- Tạo bảng customers
+-- Drop customers, xoá bảng drop table customers
 
-CREATE TABLE cusomters
+CREATE TABLE customers
 (
 	customerid		INT,
 	firstname		VARCHAR(50),
@@ -84,8 +84,8 @@ CREATE TABLE cusomters
 	[state]			VARCHAR(50)
 )
 
--- Thêm dữ liệu vào cho Table cusomters
-	INSERT INTO cusomters (customerid, firstname, lastname, city, [state]) VALUES
+-- Thêm dữ liệu vào cho Table customers
+	INSERT INTO customers (customerid, firstname, lastname, city, [state]) VALUES
 	(10101, 'John', 'Gray', 'Lynden', 'Washington'),
 	(10298, 'Leroy', 'Brown', 'Pinetop', 'Arizona'),
 	(10299, 'Elroy', 'Keller', 'Snoqualmie', 'Washington'),
@@ -105,7 +105,7 @@ CREATE TABLE cusomters
 	(10449, 'Isabela', 'Isabela', 'Yuma', 'Arizona')
 
 -- Truy vấn dữ liệu table items_ordered
- SELECT* FROM cusomters
+ SELECT* FROM customers
 
  ------------------------------------------------------------
  -- BẢNG PHÂN TASK CÔNG VIỆC CHO THÀNH VIÊN
@@ -229,8 +229,8 @@ CREATE TABLE cusomters
  */
 	 SELECT [state], COUNT([state])
 	 --Chúng ta truy xuất dữ liệu từ bảng state, sau đó dùng biết đếm là COUNT, mục địch để hiện số người trong bảng.
-	FROM cusomters
-	--từ bảng cusomters 
+	FROM customers
+	--từ bảng customers 
 	GROUP BY [state];
 	--Trong group by cho phép ta sắp xếp các hàng của truy vấn theo nhóm. Các nhóm được xác định bởi các cột mà bạn chỉ định.Cụ thể ở đây là state.
 	
@@ -260,8 +260,8 @@ Câu 15. Select the lastname, firstname, and city for all customers in the custo
 */
 	SELECT lastname, firstname, city
 	--Ta cần truy xuất dữ liệu từ trường lastname, firstname, city
-	FROM cusomters
-	-- Từ bảng cusomters
+	FROM customers
+	-- Từ bảng customers
 	ORDER BY lastname ASC;
 	--Order by lastname ASC cho ta có thể thứ tự sắp xếp mặc định là tăng dần (A đến Z, 0 đến 9)
 	--Ngược lại chúng ta có thể dùng Order by lastname DESC để sắp xếp theo thứ tự giảm dần (Z đến A, 9 đến 0)
@@ -289,7 +289,7 @@ WHERE order_date LIKE '%Dec%'
 ;
   --Với yêu cầu ngày đặt là tháng 12
   --Câu 12: How many people are in each unique state in the customers table that have more than one person in the state? Select the state and display the number of how many people are in each if it's greater than 1.
-SELECT state, COUNT(state) Quantity FROM cusomters
+SELECT state, COUNT(state) Quantity FROM customers
 
 GROUP BY state
 HAVING COUNT(state) > 1;
@@ -311,15 +311,15 @@ WHERE item NOT IN ('Snow Shoes','Ear Muffs');
 --Cách 1:
 SELECT firstname, city, state 
 --Hiển thị các trường firstname, city, state 
-FROM cusomters
---Từ bảng cusomters
+FROM customers
+--Từ bảng customers
 WHERE state ='Arizona' or state ='Washington' or state ='Oklahoma' or state ='Colorado' or state ='Hawaii';
 --Với yêu cầu state là Arizona, Washington, Oklahoma, Colorado hoặc Hawaii.
 --cách 2:
 SELECT firstname, city, state 
  --Hiển thị các trường firstname, city, state 
-FROM cusomters
---Từ bảng cusomters
+FROM customers
+--Từ bảng customers
 WHERE state IN ('Arizona', 'Washington', 'Oklahoma', 'Colorado', 'Hawaii')
 -- Với yêu cầu chọn tất cả state là  Arizona, Washington, Oklahoma, Colorado hoặc Hawaii.
 --Câu 16: 
