@@ -119,12 +119,12 @@ CREATE TABLE cusomters
 	-- dùng toán tử WHERE đưa điều kiện đó là trường customerid phải bằng 10449, sau đó hiển thị ra
 	WHERE customerid = 10449;
  /*
- Câu 2. Select all columns from the items_ordered table for whoever purchased a Tent.
+ Câu 7. What are the total number of rows in the items_ordered table?
  */
-	-- Tương tự ta hiển thị truy xuất ra Bảng items_ordered
-	SELECT * FROM items_ordered
-	-- sau đó dùng toán tử WHERE đưa điều kiện đó là trường item phải là 'Tent'
-	WHERE item = 'Tent';
+	-- Tương tự ta hiển thị truy xuất rồi dùng hàm COUNT để đếm tất cả cột items_ordered có bao nhiêu số lượng
+	SELECT COUNT(*)
+	-- Trong bảng items_ordered
+	FROM items_ordered;
 
  /*
  Câu 3. Select the customerid, order_date, and item values from the items_ordered table for any items in the item column that start with the letter "S".
