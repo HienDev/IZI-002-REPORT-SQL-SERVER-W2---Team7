@@ -218,17 +218,20 @@ CREATE TABLE cusomters
 
  -----------------------------------------------------------------------
 
-  -- 4. VÕ THANH HẢI - LÀM CÂU 6,12,18,21
+  -- 4. - Võ Thanh Hải (Câu 6, 12, 18, 21, 16, 20)
  
   -- Thành viên ghi CODE VÀ GIẢI THÍCH theo Format của mình trên như vậy!
   --Câu 6 : Select the average price of all of the items ordered that were purchased in the month of Dec.
 SELECT AVG(price) as AvgPrice
+-- hiển thị giá trị trung của trường price và đặt bí danh cho price là AvgPrice
 FROM items_ordered
+--Từ bảng items_ordered
 WHERE order_date LIKE '%Dec%'
 ;
   --Với yêu cầu ngày đặt là tháng 12
   --Câu 12: How many people are in each unique state in the customers table that have more than one person in the state? Select the state and display the number of how many people are in each if it's greater than 1.
 SELECT state, COUNT(state) Quantity FROM cusomters
+
 GROUP BY state
 HAVING COUNT(state) > 1;
 --Câu 18 :Select the customerid, order_date, and item from the items_ordered table for all items unless they are 'Snow Shoes' or if they are 'Ear Muffs'. Display the rows as long as they are not either of these two items.
@@ -237,11 +240,14 @@ SELECT customerid, order_date, item
 FROM items_ordered
 --Từ bảng items_ordered
 WHERE NOT item ='Snow Shoes' or item ='Ear Muffs';
--- VỚi yêu cầu trừ các item là snow shoes và ear muffs
+-- VỚi yêu cầu trừ các item là snow shoes hoặc ear muffs
 --cách 2:
 SELECT customerid, order_date, item 
+--Hiển thị các trường customerid, order_date, item 
 FROM items_ordered
+--Từ bảng items_ordered
 WHERE item NOT IN ('Snow Shoes','Ear Muffs');
+--Với yêu cầu chọn tất cả item không phải là snow shoes hoặc ear muffs
 --Câu 21 : Select the firstname, city, and state from the customers table for all of the rows where the state value is either: Arizona, Washington, Oklahoma, Colorado, or Hawaii.
 --Cách 1:
 SELECT firstname, city, state 
@@ -252,12 +258,16 @@ WHERE state ='Arizona' or state ='Washington' or state ='Oklahoma' or state ='Co
 --Với yêu cầu state là Arizona, Washington, Oklahoma, Colorado hoặc Hawaii.
 --cách 2:
 SELECT firstname, city, state 
- 
+ --Hiển thị các trường firstname, city, state 
 FROM cusomters
+--Từ bảng cusomters
 WHERE state IN ('Arizona', 'Washington', 'Oklahoma', 'Colorado', 'Hawaii')
-
-
-
+-- Với yêu cầu chọn tất cả state là  Arizona, Washington, Oklahoma, Colorado hoặc Hawaii.
+--Câu 16: 
+SELECT customerid, item, price FROM items_ordered 
+-- dùng toán tử WHERE đưa điều kiện đó là trường customerid phải bằng 10449, sau đó hiển thị ra
+WHERE customerid = 10449 
+ORDER BY customerid  DESC ;
 
 
 
